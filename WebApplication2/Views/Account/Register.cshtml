@@ -1,0 +1,56 @@
+﻿@model WebApplication2.Dtos.RegisterRequestDto
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h3 class="card-title text-center mb-4">Register</h3>
+                    <form asp-action="Register">
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Full Name</label>
+                            <input type="text"
+                                   class="form-control"
+                                   asp-for="Name"
+                                   placeholder="Enter your Name" />
+                            <p asp-validation-for="Name" class="text-danger"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label">Email</label>
+                            <input type="text"
+                                   class="form-control"
+                                   asp-for="Email"
+                                   placeholder="Enter your Email" />
+                            <p asp-validation-for="Email" class="text-danger"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label">Password</label>
+                            <input type="password"
+                                   class="form-control"
+                                   asp-for="Password"
+                                   placeholder="Enter your password"
+                                   minlength="6" />
+                            <p asp-validation-for="Password" class="text-danger"></p>
+                            <div class="form-text">Password must be at least 6 characters long.</div>
+                        </div>
+                        <div class="text-center d-flex justify-content-around ">
+                            <button type="submit" class="btn btn-primary btn-lg w-50 mx-2">Register</button>
+                            <a asp-action="Index" asp-controller="Home" class="btn btn-primary btn-lg w-50 mx-2">Home</a>
+                            @* <div id="formFeedback" class="mt-3"></div> *@
+                        </div>
+                    </form>
+                    <p class="text-center my-2">If you are registered, please <a asp-action="Login"> Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

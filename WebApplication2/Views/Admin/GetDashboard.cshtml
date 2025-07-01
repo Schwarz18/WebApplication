@@ -1,0 +1,154 @@
+﻿@model WebApplication2.Dtos.AdminDashboardDto
+
+
+
+ @* <h2>Admin Dashboard</h2>  *@
+ @* <ul>  *@
+ @*     <li>Total Users: @Model.TotalUsers</li>  *@
+ @*     <li>Total Products: @Model.TotalProducts</li>  *@
+ @*     <li>Total Orders: @Model.TotalOrders</li>  *@
+ @* </ul> *@
+
+<div class="dashboard-header bg-primary text-white py-4 rounded shadow-sm">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="fw-bold display-5 mb-2">Welcome back, Admin!</h1>
+                <p class="mb-0 fs-5">Here's what's happening with your platform today.</p>
+            </div>
+            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <span class="badge bg-light text-primary fs-6 px-3 py-2">
+                    <i class="fas fa-calendar-alt me-2"></i>
+                    <span id="currentDate"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row g-4 mb-4 ">
+        <div class="col-lg-4 col-md-6 shadow-lg">
+            <div class="card text-center shadow-sm border-0">
+                <div class="card-body">
+                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-users fs-4"></i>
+                    </div>
+                    <h4 class="fw-bold mb-1" id="totalUsers">@Model.TotalUsers</h4>
+                    <p class="text-muted mb-0">Total Users</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 shadow-lg">
+            <div class="card text-center shadow-sm border-0">
+                <div class="card-body">
+                    <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-box fs-4"></i>
+                    </div>
+                    <h4 class="fw-bold mb-1" id="totalProducts">@Model.TotalProducts</h4>
+                    <p class="text-muted mb-0">Total Products</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 shadow-lg">
+            <div class="card text-center shadow-sm border-0">
+                <div class="card-body">
+                    <div class="bg-warning text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 60px; height: 60px;">
+                        <i class="fas fa-shopping-cart fs-4"></i>
+                    </div>
+                    <h4 class="fw-bold mb-1" id="totalOrders">@Model.TotalOrders</h4>
+                    <p class="text-muted mb-0">Total Orders</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const currentDate = new Date().toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        document.getElementById("currentDate").textContent = currentDate;
+    });
+</script>
+
+
+
+@* <!DOCTYPE html> *@
+@* <html lang="en"> *@
+@* <head> *@
+@*     <meta charset="UTF-8"> *@
+@*     <meta name="viewport" content="width=device-width, initial-scale=1.0"> *@
+@*     <title>Admin Dashboard</title> *@
+@*     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"> *@
+@*     
+@* </head> *@
+@* <body> *@
+    
+ 
+
+     @* <div class="container">  *@
+     @*     <div class="row g-4 mb-4">  *@
+     @*         <div class="col-lg-4 col-md-6">  *@
+     @*             <div class="card stat-card">  *@
+     @*                 <div class="card-body text-center">  *@
+     @*                     <div class="stat-icon users-card mx-auto">  *@
+     @*                         <i class="fas fa-users"></i>  *@
+     @*                     </div>  *@
+     @*                     <div class="stat-number" id="totalUsers">@Model.TotalUsers</div>  *@
+     @*                     <div class="stat-label">Total Users</div>  *@
+                    
+     @*                 </div>  *@
+     @*             </div>  *@
+     @*         </div>  *@
+
+     @*         <div class="col-lg-4 col-md-6">  *@
+     @*             <div class="card stat-card">  *@
+     @*                 <div class="card-body text-center">  *@
+     @*                     <div class="stat-icon products-card mx-auto">  *@
+     @*                         <i class="fas fa-box"></i>  *@
+     @*                     </div>  *@
+     @*                     <div class="stat-number" id="totalProducts">@Model.TotalProducts</div>  *@
+     @*                     <div class="stat-label">Total Products</div>  *@
+                    
+     @*                 </div>  *@
+     @*             </div>  *@
+     @*         </div>  *@
+
+     @*         <div class="col-lg-4 col-md-6">  *@
+     @*             <div class="card stat-card">  *@
+     @*                 <div class="card-body text-center">  *@
+     @*                     <div class="stat-icon orders-card mx-auto">  *@
+     @*                         <i class="fas fa-shopping-cart"></i>  *@
+     @*                     </div>  *@
+     @*                     <div class="stat-number" id="totalOrders">@Model.TotalOrders</div>  *@
+     @*                     <div class="stat-label">Total Orders</div>  *@
+                    
+     @*                 </div>  *@
+     @*             </div>  *@
+     @*         </div>  *@
+     @*     </div>  *@
+
+        
+     @* </div> *@
+
+@*     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> *@
+@*     <script> *@
+@*         document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', { *@
+@*             weekday: 'long', *@
+@*             year: 'numeric', *@
+@*             month: 'long', *@
+@*             day: 'numeric' *@
+@*         }); *@
+
+
+@*     </script> *@
+@* </body> *@
+@* </html> *@

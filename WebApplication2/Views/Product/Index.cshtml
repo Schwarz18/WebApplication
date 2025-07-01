@@ -1,0 +1,116 @@
+﻿@model IEnumerable<WebApplication2.Dtos.ProductReadDto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@if (Context.Session.GetString("UserRole") == "Admin")
+{
+    <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="mb-0">Manage Products</h1>
+    <form asp-action="Create" method="get">
+        <button type="submit" class="btn btn-primary">Create New</button>
+    </form>
+</div>
+
+<table class="table table-hover shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Product Category</th>
+            <th>Image</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Category)</td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" alt="@item.Name" class="img-thumbnail" style="height: 50px; width: 50px;" />
+                    </td>
+                    <td>
+                        <div class="d-flex gap-2 justify-content-center">
+                            <form asp-action="Edit" method="get">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button type="submit" class="btn btn-warning btn-sm">Edit</button>
+                            </form>
+                            <form asp-action="Delete" method="post">
+                                <input type="hidden" name="id" value="@item.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                            </form>
+                            </div>
+                    </td>
+                </tr>
+
+        }
+    </tbody>
+</table>
+
+}
+else 
+{
+    <h1>Available Products</h1>
+    <div class="container py-5">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center gap-4">
+            @foreach (var item in Model)
+            {
+                <div class="card shadow-sm border-0" style="max-width: 320px;">
+                    <img src="@item.ImageUrl" class="card-img-top bg-center bg-cover bg-no-repeat" alt="@item.Name" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text text-muted">@item.Description</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="h5 text-primary mb-0">
+                                &#8377;@item.Price
+                            </span>
+                            <small class="text-muted">Category: <strong>@item.Category</strong></small>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between align-items-center " style="background-color:whitesmoke; padding-bottom:20px">
+                        <form asp-controller="Cart" asp-action="Add" method="post" class="d-inline">
+                            <input type="hidden" name="productId" value="@item.Id" />
+                            <input type="number" name="Quantity" value="1" min="1" max="10" class="form-control d-none" />
+                            <button type="submit" class="btn btn-sm btn-primary">Add to Cart</button>
+                        </form>
+                        <button class="btn btn-sm btn-outline-secondary">
+                            <i class="bi bi-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+}
+<style>
+    .card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+    .card-img-top {
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-img-top {
+        transform: scale(1.05);
+    }
+
+    .card-footer button:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s ease;
+    }
+</style>
+

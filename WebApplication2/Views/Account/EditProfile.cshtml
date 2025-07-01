@@ -1,0 +1,90 @@
+﻿@model WebApplication2.Dtos.UpdateUserProfileDto
+
+@{
+    ViewData["Title"] = "EditProfile";
+}
+
+@* <div class="container"> *@
+@*     <div class="row justify-content-center mt-5"> *@
+@*         <div class="col-md-6"> *@
+@*             <div class="card"> *@
+@*                 <div class="card-header bg-primary text-white"> *@
+@*                     <h4 class="mb-0">Edit My Profile</h4> *@
+@*                 </div> *@
+@*                 <div class="card-body"> *@
+@*                     <form asp-action="EditProfile"> *@
+@*                         <div class="mb-3"> *@
+@*                             <label asp-for="Name" class="form-label"></label> *@
+@*                             <input type="text" asp-for="Name" class="form-control" id="email"> *@
+@*                             <span asp-validation-for="Name" class="text-danger"></span> *@
+@*                         </div> *@
+@*                         <div class="mb-3"> *@
+@*                             <label asp-for="Email" class="form-label"></label> *@
+@*                             <input type="text" asp-for="Email" class="form-control" id="email"> *@
+@*                             <span asp-validation-for="Email" class="text-danger"></span> *@
+@*                         </div> *@
+@*                         <div class="mb-3"> *@
+@*                             <label asp-for="Address" class="form-label"></label> *@
+@*                             <input type="text" asp-for="Address" class="form-control" id="email"> *@
+@*                             <span asp-validation-for="Address" class="text-danger"></span> *@
+@*                         </div> *@
+@*                         <div class="text-center d-flex justify-content-around "> *@
+@*                             <input type="submit" value="Update Profile" class="btn btn-primary btn-lg w-50 mx-2" /> *@
+@*                             <a asp-action="Profile" class="btn btn-primary btn-lg w-50 mx-2">Back</a> *@
+@*                         </div> *@
+@*                     </form> *@
+
+@*                 </div> *@
+@*             </div> *@
+@*         </div> *@
+@*     </div> *@
+@* </div> *@
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h4 class="mb-0">✏️ Edit My Profile</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="EditProfile">
+                        <!-- Name -->
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-semibold"></label>
+                            <input type="text" asp-for="Name" class="form-control" placeholder="Enter your name">
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label fw-semibold"></label>
+                            <input type="email" asp-for="Email" class="form-control" placeholder="Enter your email">
+                            <span asp-validation-for="Email" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="mb-3">
+                            <label asp-for="Address" class="form-label fw-semibold"></label>
+                            <input type="text" asp-for="Address" class="form-control" placeholder="Enter your address">
+                            <span asp-validation-for="Address" class="text-danger small"></span>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-between mt-4">
+                            <input type="submit" value="✅ Update Profile" class="btn btn-success w-50 me-2">
+                            <a asp-action="Profile" class="btn btn-secondary w-50 ms-2">🔙 Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
